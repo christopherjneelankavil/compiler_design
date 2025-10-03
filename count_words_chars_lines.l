@@ -3,7 +3,7 @@
     int lines = 0;
     int characters = 0;
     int words = 0;
-}%
+%}
 
 %%
 
