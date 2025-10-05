@@ -443,12 +443,11 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "count_words_chars_lines.l"
 #line 2 "count_words_chars_lines.l"
-    #include <stdio.h>
-    int lines = 0;
-    int characters = 0;
-    int words = 0;
+    
+    int lines = 1, words = 0, characters = 0;
+
+#line 450 "lex.yy.c"
 #line 451 "lex.yy.c"
-#line 452 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -665,10 +664,10 @@ YY_DECL
 		}
 
 	{
-#line 8 "count_words_chars_lines.l"
+#line 7 "count_words_chars_lines.l"
 
 
-#line 672 "lex.yy.c"
+#line 671 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -727,31 +726,31 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 10 "count_words_chars_lines.l"
+#line 9 "count_words_chars_lines.l"
 {characters++;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 11 "count_words_chars_lines.l"
+#line 10 "count_words_chars_lines.l"
 {words++;}
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 12 "count_words_chars_lines.l"
+#line 11 "count_words_chars_lines.l"
 {words++;lines++;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 13 "count_words_chars_lines.l"
-{printf("No.of characters : %d\nNo.of words : %d\nNo.of lines : %d\n",characters,words,lines); return 0;}
+#line 12 "count_words_chars_lines.l"
+{printf("Total no.of characters : %d\nTotal no.of words : %d\nTotal no.of lines : %d\n",characters,words,lines);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 15 "count_words_chars_lines.l"
+#line 14 "count_words_chars_lines.l"
 ECHO;
 	YY_BREAK
-#line 755 "lex.yy.c"
+#line 754 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1756,13 +1755,12 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 15 "count_words_chars_lines.l"
+#line 14 "count_words_chars_lines.l"
 
 
 int main() {
-    printf("Enter the string : ");
+    printf("Enter a string (should end with 'end') : ");
     yylex();
-    return 0;
 }
 
 int yywrap() {

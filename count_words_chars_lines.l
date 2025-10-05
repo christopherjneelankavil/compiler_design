@@ -1,23 +1,21 @@
 %{
-    #include <stdio.h>
-    int lines = 0;
-    int characters = 0;
-    int words = 0;
+    
+    int lines = 1, words = 0, characters = 0;
+
 %}
 
 %%
 
-[a-zA-Z]    {characters++;}
-" "         {words++;}
-"\n"        {words++;lines++;}
-end         {printf("No.of characters : %d\nNo.of words : %d\nNo.of lines : %d\n",characters,words,lines); return 0;}
+[a-zA-Z]        {characters++;}
+" "             {words++;}
+"\n"            {words++;lines++;}
+end             {printf("Total no.of characters : %d\nTotal no.of words : %d\nTotal no.of lines : %d\n",characters,words,lines);}
 
 %%
 
 int main() {
-    printf("Enter the string : ");
+    printf("Enter a string (should end with 'end') : ");
     yylex();
-    return 0;
 }
 
 int yywrap() {
