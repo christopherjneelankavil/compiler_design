@@ -545,7 +545,7 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    13,    13,    19,    20,    21,    22,    23,    24,    25
+       0,    13,    13,    18,    19,    20,    21,    22,    23,    24
 };
 #endif
 
@@ -1112,56 +1112,55 @@ yyreduce:
   case 2: /* ArithmeticExpression: E  */
 #line 13 "test.y"
                          {
-    printf("Result : %d\n",yyval); 
-    return 0;
+    printf("result : %d",yyval);
 }
-#line 1119 "y.tab.c"
+#line 1118 "y.tab.c"
     break;
 
   case 3: /* E: E '+' E  */
-#line 19 "test.y"
+#line 18 "test.y"
                 {yyval = yyvsp[-2] + yyvsp[0];}
-#line 1125 "y.tab.c"
+#line 1124 "y.tab.c"
     break;
 
   case 4: /* E: E '-' E  */
-#line 20 "test.y"
+#line 19 "test.y"
                 {yyval = yyvsp[-2] - yyvsp[0];}
-#line 1131 "y.tab.c"
+#line 1130 "y.tab.c"
     break;
 
   case 5: /* E: E '*' E  */
-#line 21 "test.y"
+#line 20 "test.y"
                 {yyval = yyvsp[-2] * yyvsp[0];}
-#line 1137 "y.tab.c"
+#line 1136 "y.tab.c"
     break;
 
   case 6: /* E: E '/' E  */
-#line 22 "test.y"
+#line 21 "test.y"
                 {yyval = yyvsp[-2] / yyvsp[0];}
-#line 1143 "y.tab.c"
+#line 1142 "y.tab.c"
     break;
 
   case 7: /* E: E '%' E  */
-#line 23 "test.y"
+#line 22 "test.y"
                 {yyval = yyvsp[-2] % yyvsp[0];}
-#line 1149 "y.tab.c"
+#line 1148 "y.tab.c"
     break;
 
   case 8: /* E: '(' E ')'  */
-#line 24 "test.y"
+#line 23 "test.y"
                 {yyval = yyvsp[-1];}
-#line 1155 "y.tab.c"
+#line 1154 "y.tab.c"
     break;
 
   case 9: /* E: NUMBER  */
-#line 25 "test.y"
+#line 24 "test.y"
                 {yyval = yyvsp[0];}
-#line 1161 "y.tab.c"
+#line 1160 "y.tab.c"
     break;
 
 
-#line 1165 "y.tab.c"
+#line 1164 "y.tab.c"
 
       default: break;
     }
@@ -1354,20 +1353,18 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 28 "test.y"
+#line 27 "test.y"
 
 
 int main() {
-    printf("Enter the expression : ");
+    printf("Input : ");
     yyparse();
-    if(!flag) {
-        printf("valid\n");
+    if(!flag){
+        printf("\nvalid");
     }
     return 0;
 }
 
 int yyerror() {
-    flag = 1;
-    printf("invalid\n");
     return 0;
 }
