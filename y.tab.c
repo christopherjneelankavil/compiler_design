@@ -67,7 +67,7 @@
 
 
 /* First part of user prologue.  */
-#line 1 "intermediate_code.y"
+#line 1 "test.y"
 
     #include <stdio.h>
     #include <stdlib.h>
@@ -132,7 +132,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 7 "intermediate_code.y"
+#line 7 "test.y"
 char dval;
 
 #line 139 "y.tab.c"
@@ -1113,38 +1113,38 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* S: E  */
-#line 16 "intermediate_code.y"
-            {printf("X = %c\n",(yyval.dval));}
+#line 16 "test.y"
+                        {printf("X = %c\n", (yyval.dval));}
 #line 1119 "y.tab.c"
     break;
 
   case 3: /* E: NUM  */
-#line 19 "intermediate_code.y"
-            {}
+#line 19 "test.y"
+                        {}
 #line 1125 "y.tab.c"
     break;
 
   case 4: /* E: E '+' E  */
-#line 20 "intermediate_code.y"
-            {printf("%c = %c + %c", p, (yyvsp[-2].dval), (yyvsp[0].dval)); (yyval.dval) = p; p++; }
+#line 20 "test.y"
+                        {printf("%c = %c + %c\n", p, (yyvsp[-2].dval), (yyvsp[0].dval)); (yyval.dval) = p++; }
 #line 1131 "y.tab.c"
     break;
 
   case 5: /* E: E '-' E  */
-#line 21 "intermediate_code.y"
-            {printf("%c = %c - %c", p, (yyvsp[-2].dval), (yyvsp[0].dval)); (yyval.dval) = p; p++; }
+#line 21 "test.y"
+                        {printf("%c = %c - %c\n", p, (yyvsp[-2].dval), (yyvsp[0].dval)); (yyval.dval) = p++; }
 #line 1137 "y.tab.c"
     break;
 
   case 6: /* E: E '*' E  */
-#line 22 "intermediate_code.y"
-            {printf("%c = %c * %c", p, (yyvsp[-2].dval), (yyvsp[0].dval)); (yyval.dval) = p; p++; }
+#line 22 "test.y"
+                        {printf("%c = %c * %c\n", p, (yyvsp[-2].dval), (yyvsp[0].dval)); (yyval.dval) = p++; }
 #line 1143 "y.tab.c"
     break;
 
   case 7: /* E: E '/' E  */
-#line 23 "intermediate_code.y"
-            {printf("%c = %c / %c", p, (yyvsp[-2].dval), (yyvsp[0].dval)); (yyval.dval) = p; p++; }
+#line 23 "test.y"
+                        {printf("%c = %c / %c\n", p, (yyvsp[-2].dval), (yyvsp[0].dval)); (yyval.dval) = p++; }
 #line 1149 "y.tab.c"
     break;
 
@@ -1342,18 +1342,17 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 26 "intermediate_code.y"
+#line 26 "test.y"
 
 
 int yyerror() {
-    printf("The expression is invalid");
+    printf("The expresion is invalid\n");
     exit(0);
 }
 
 int main() {
-    printf("Enter the expression : ");
+    printf("Enter the expresion: ");
     yyparse();
-    printf("\nThe expression is valid");
+    printf("The expresion is valid\n");
     return 0;
 }
-

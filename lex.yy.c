@@ -436,9 +436,9 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "intermediate_code.l"
-#line 2 "intermediate_code.l"
-    #include "y.tab.h"
+#line 1 "test.l"
+#line 2 "test.l"
+    #include "y.tab.h"      
 #line 443 "lex.yy.c"
 #line 444 "lex.yy.c"
 
@@ -657,7 +657,7 @@ YY_DECL
 		}
 
 	{
-#line 5 "intermediate_code.l"
+#line 5 "test.l"
 
 
 #line 664 "lex.yy.c"
@@ -719,23 +719,23 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 7 "intermediate_code.l"
+#line 7 "test.l"
 {yylval.dval = yytext[0]; return NUM;}
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 8 "intermediate_code.l"
+#line 8 "test.l"
 return 0;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 9 "intermediate_code.l"
+#line 9 "test.l"
 return yytext[0];
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 11 "intermediate_code.l"
+#line 11 "test.l"
 ECHO;
 	YY_BREAK
 #line 742 "lex.yy.c"
@@ -1743,6 +1743,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 11 "intermediate_code.l"
+#line 11 "test.l"
+
 
 
