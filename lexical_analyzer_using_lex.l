@@ -1,47 +1,36 @@
 %{
+    #include<stdio.h>
     int comment = 0;
 %}
 
-IDENTIFIER    [a-zA-Z_][a-zA-Z0-9_]*
-KEYWORD     int|float|char|double|while|for|struct|typedef|do|if|break|continue|void|switch|else|return|goto
+IDENTIFIER                 [a-zA-Z_][a-zA-Z_0-9]*
+KEYWORD                    int|float|double|char|if|else|elseif|for|while|do|goto
 
 %%
 
-#.*                                 { printf("\n%s is a preprocessor directive", yytext); }
-{KEYWORD}                           { printf("\n%s is a keyword", yytext); }
-"/*"                        		{ comment = 1; printf("\n%s is a comment", yytext); }
-"*/"                        		{ comment = 0; printf("\nEnd of comment"); }
-{IDENTIFIER}"("                     { if(!comment) printf("\n%s is a function", yytext); }
-"{"                         		{ if(!comment) printf("\nblock begins"); }
-"}"                         		{ if(!comment) printf("\nblock ends"); }
-{IDENTIFIER}(\[[0-9]+\])?           { if(!comment) printf("\n%s is an identifier", yytext); }
-\"([^\"\n]|\\.)*\"           		{ if(!comment) printf("\n%s is a string", yytext); }
-[0-9]+                     		    { if(!comment) printf("\n%s is a number", yytext); }
-"="                         		{ if(!comment) printf("\n%s is an assignment operator", yytext); }
-">="|"<="|"=="|"<"|">"              { if(!comment) printf("\n%s is a relational operator", yytext); }
-.|\n                                {}
+#.*                         {printf("%s is a preprocessor directive\n", yytext); }
+{KEYWORD}                   {printf("%s is a keyword\n", yytext); }
+"/*"                        {comment = 1; printf("%s is a comment\n", yytext); }
+"*/"                        {comment = 0; printf("comment ends\n"); }
+{IDENTIFIER}"("             {if(!comment) printf("%s) is a function\n", yytext); }
+"{"                         {if(!comment) printf("Block begins\n"); }
+"}"                         {if(!comment) printf("Block ends\n"); }
+[0-9]+                      {if(!comment) printf("%s is a digit\n", yytext); }
+{IDENTIFIER}(\[[0-9]+\])?   {if(!comment) printf("%s is an IDENTIFIER\n", yytext); }
+\"([^\"\n]|\\.)*\"          {if(!comment) printf("%s is a string\n", yytext); }
+"<"|"<="|"=="|">"|">="      {if(!comment) printf("%s is a relational operator\n", yytext); }
+"="                         {if(!comment) printf("%s is an assignment operator\n", yytext); }
+.|\n                        {}
 
-             
 %%
 
-int main(int argc, char **argv){
+int yywrap() {
+    return 1;
+}
 
-    FILE *fp; 
-    fp = fopen("files/code.txt", "r");
-    
-    if(!fp){
-        printf("File not found\n");
-        exit(0);
-    }
-    
+int main(){
+    FILE *fp = fopen("files/code.txt","r");
     yyin = fp;
     yylex();
-    printf("\n");
-    
     return 0;
 }
-
-int yywrap(){
-        return 0;
-}
-        
